@@ -61,12 +61,25 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     fprintf(file, "Remaining calories: %d\n", remaining_calories);
     
     // Check if the calories have been consumed
-    if (isCaloriesConsumed(health_data)) {
+     if (remaining_calories == 0) {    	
         fprintf(file, "You have consumed all your calories for today!\n");
+    } else if (remaining_calories < 0) {
+        fprintf(file, "[Warning] Too few calories!\n");
+        if (health_data->total_calories_intake == DAILY_CALORIE_GOAL) {
+            fprintf(file, "Your total calorie intake for today has reached your goal!\n");
+        } else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) {
+            fprintf(file, "Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
+        } else {
+            fprintf(file, "You have eaten more calories than planned today, but you have exercised too much!\n");
+        }
     } else {
-        fprintf(file, "You can still consume %d calories today.\n", remaining_calories);
+        fprintf(file, "Please exercise for your health!\n");
+        if (health_data->total_calories_intake == DAILY_CALORIE_GOAL) {
+            fprintf(file, "Your total calorie intake for today has reached your goal!\n");
+        } else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) {
+            fprintf(file, "Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
+        }
     }
-
 
     fclose(file);
 }
@@ -121,12 +134,25 @@ void printHealthData(const HealthData* health_data) {
     
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
-	if (remaining_calories > 0) {
-        printf("You can still consume %d calories today.\n", remaining_calories);
+	if (remaining_calories == 0) {
+        printf("You have consumed all your calories for today!\n");
+    } else if (remaining_calories < 0) {
+        printf("[Warning] Too few calories!\n");
+        if (health_data->total_calories_intake == DAILY_CALORIE_GOAL) {
+            printf("Your total calorie intake for today has reached your goal!\n");
+        } else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) {
+            printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
+        } else {
+            printf("You have eaten more calories than planned today, but you have exercised too much!\n");
+        }
     } else {
-        printf("You have exceeded your calorie intake for today.\n");
+        printf("Please exercise for your health!\n");
+        if (health_data->total_calories_intake == DAILY_CALORIE_GOAL) {
+            printf("Your total calorie intake for today has reached your goal!\n");
+        } else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) {
+            printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
+        }
     }
-    
-    
-	 printf("=======================================================================\n");
+
+    printf("=======================================================================\n");
 }
