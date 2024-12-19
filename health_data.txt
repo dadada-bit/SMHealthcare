@@ -1,0 +1,12 @@
+[Exercises] 
+Total calories burned: 0
+
+[Diets] 
+Total calories intake: 0
+
+[Total] 
+Total calories burned: 0
+Total calories intake: 0
+Remaining calories: 2000
+Please exercise for your health!
+Your total calorie intake for today has not reached your goal, remember to eat more!!

@@ -18,6 +18,7 @@
 #define HEALTHFILEPATH "health_data.txt"
 
 static int choice;
+int i;
 
 int main() {
 	// To initialize the health data object
@@ -48,19 +49,21 @@ int main() {
         switch (choice) {
             case 1:
             	inputExercise(&health_data);
+            	saveData(HEALTHFILEPATH, &health_data);
             	
                 break;
                 
             case 2:
             	inputDiet(&health_data);
+            	saveData(HEALTHFILEPATH, &health_data);
             	
                 break;
                 
             case 3:
-            	printf("Total calories consumed: %d\n", health_data.total_calories_intake);
-                printf("Total calories burned: %d\n", health_data.total_calories_burned);
-                
-                break;
+            	printHealthData(&health_data);
+            	
+            	break;
+
                 
             case 4:
             	
