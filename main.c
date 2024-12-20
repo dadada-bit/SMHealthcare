@@ -73,12 +73,11 @@ int main() {
                 break;
                 
             default:
-                printf("[Error] Invalid option. \n");
+                printf("Error: Invalid option. \n");
                 printf("Please try again! \n");
         }
     } while (choice != 4); //Repeat until the user selects option 4
 
 
-    return 0; //Program exits
+    return 0; 
 }
-
