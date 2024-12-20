@@ -60,13 +60,12 @@ void inputDiet(HealthData* health_data) {
     
     //For healthy calorie intake, limit to 3 meals a day
     if (health_data->diet_count >= 3) {
-    	printf("You can only have 3 meals today.");
+    	printf("You can only have up to 3 meals today.");
     	return;
     }
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
-    
     for (diet_index = 0; diet_index < diet_list_size; diet_index++) {
         printf("%d. %s\n", diet_index + 1, diet_list[diet_index].food_name);
     }
@@ -94,15 +93,11 @@ void inputDiet(HealthData* health_data) {
     int total_calories_intake = diet_list[choice - 1].calories_intake * intake;
     
     // Store the selected diet and total calories intake in the health data
-    strncpy(health_data->diet[health_data->diet_count].food_name, 
-            diet_list[choice - 1].food_name, MAX_FOOD_NAME_LEN - 1);
-            health_data->diet[health_data->diet_count].calories_intake = total_calories_intake;
-            health_data->diet_count++;
-    
-    // Update the total calories intake
-    health_data->total_calories_intake += total_calories_intake;
-
+    strncpy(health_data->diet[health_data->diet_count].food_name, diet_list[choice - 1].food_name, MAX_FOOD_NAME_LEN - 1);
+    health_data->diet[health_data->diet_count].calories_intake = total_calories_intake;
+    health_data->diet_count++;
 
     // ToCode: to enter the total calories intake in the health data
-        printf("You have intaken %d calories by eating %s (%d intake).\n", total_calories_intake, diet_list[choice - 1].food_name, intake);
+    health_data->total_calories_intake += total_calories_intake;
+    printf("You have intaken %d calories by eating %s (%d intake).\n", total_calories_intake, diet_list[choice - 1].food_name, intake);
 }

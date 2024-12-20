@@ -1,12 +1,10 @@
 [Exercises] 
-Ewalking- 80 kcal 
-Erunning- 220 kcal 
-Total calories burned: 300 kcal
+running- 220 kcal 
+Total calories burned: 220 kcal
 
 [Diets] 
-bread- 1360 kcal 
-Total calories intake: 1360 kcal
+Total calories intake: 0 kcal
 
 [Total] 
 Basal metabolic rate - 1300 kcal
-The remaining calories: -240 kcal
+The remaining calories: -1520 kcal

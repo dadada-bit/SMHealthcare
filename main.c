@@ -34,11 +34,11 @@ int main() {
     	
     	//Termination condition_1: Remaining calories are equal to zero.
     	if (remaining_calories = 0) {
-    		printf("\nYou have consumed or balanced all your calories for today!\n");
-    		
+    		printf("\nYou have consumed or balanced all your calories for today!\n");	
     		break; //Exit the system
 		} 
 		
+		// Print the menu options
 		printf("\n=======================================================================\n");
         printf("[Healthcare Management Systems] \n");
         printf("1. Exercise \n");
@@ -63,7 +63,7 @@ int main() {
                 break;
                 
             case 3:
-            	printHealthData(&health_data);
+            	printHealthData(&health_data); // Print the history of exercises, diet, and calories
             	break;
 
                 

@@ -26,7 +26,7 @@ int exercise_list_size = 0;
     description : read the information in "excercises.txt"
 */
 
-void loadExercises(const char* EXERCISEFILEPATH) {
+void loadExercises(const char *EXERCISEFILEPATH) {
     FILE *file = fopen(EXERCISEFILEPATH, "r");
     if (file == NULL) {
         printf("There is no file for exercises! \n");
@@ -55,7 +55,7 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     			3. enter the selected exercise and the total calories burned in the health data
 */
 
-void inputExercise(HealthData* health_data) {
+void inputExercise(HealthData *health_data) {
     int choice;
     int duration;
     int exercise_index;
@@ -77,7 +77,6 @@ void inputExercise(HealthData* health_data) {
     
     if (choice == 0) {
         printf("Exiting exercise selection.\n");
-        
         return;
     }
     
@@ -93,15 +92,15 @@ void inputExercise(HealthData* health_data) {
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
     int total_calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
+    
     // Store the selected exercise and total calories burned in the health data
-    strncpy(health_data->exercises[health_data->exercise_count].exercise_name, 
-            exercise_list[choice - 1].exercise_name, MAX_EXERCISE_NAME_LEN - 1);
+    strncpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice - 1].exercise_name, MAX_EXERCISE_NAME_LEN - 1);   
     health_data->exercises[health_data->exercise_count].calories_burned_per_minute = total_calories_burned;
     health_data->exercise_count++;
-
+    
+    // Update the total calories burned in the health data
     health_data->total_calories_burned += total_calories_burned;
 
     // Display the result
     printf("You have exercised %d calories by doing %s for %d minutes.\n", total_calories_burned, exercise_list[choice - 1].exercise_name, duration);
 }
-
