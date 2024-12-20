@@ -1,10 +1,9 @@
 [Exercises] 
-running- 220 kcal 
-Total calories burned: 220 kcal
+Total calories burned: 0 kcal
 
 [Diets] 
 Total calories intake: 0 kcal
 
 [Total] 
 Basal metabolic rate - 1300 kcal
-The remaining calories: -1520 kcal
+The remaining calories: -1300 kcal

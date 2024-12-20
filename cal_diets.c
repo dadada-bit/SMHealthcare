@@ -17,7 +17,7 @@
 #define MAX_FOOD_NAME_LEN 50		// Maximum length of the name of food
 
 
-// list of diets 
+// Diets list 
 static Diet diet_list[MAX_DIETS];
 static int diet_list_size = 0;
 
@@ -29,7 +29,7 @@ static int diet_list_size = 0;
 void loadDiets(const char* DIETFILEPATH) {
     FILE *file = fopen(DIETFILEPATH, "r");
     if (file == NULL) {
-        printf("There is no file for diets! \n");
+        printf("Error: Couldn't find the diets file! \n");
         return;
     }
 
@@ -41,6 +41,7 @@ void loadDiets(const char* DIETFILEPATH) {
         	break;
 		}
     }
+    
     fclose(file);
 }
 
@@ -55,12 +56,12 @@ void loadDiets(const char* DIETFILEPATH) {
 
 void inputDiet(HealthData* health_data) {
     int choice;
-    int intake;
+    int intake = 0;
     int diet_index;
     
-    //For healthy calorie intake, limit to 3 meals a day
+    //limit to 3 meals a day for healthy calorie intake.
     if (health_data->diet_count >= 3) {
-    	printf("You can only have up to 3 meals today.");
+    	printf("You can only intake up to 3 meals today.");
     	return;
     }
     
@@ -71,15 +72,9 @@ void inputDiet(HealthData* health_data) {
     }
     
 	// ToCode: to enter the diet to be chosen with exit option
-    printf("Enter the number of the food you want to intake (0 to exit): ");
+    printf("Enter the number of the food you want to intake: ");
     scanf("%d", &choice);
     
-    if (choice == 0) {
-        printf("Exiting diet selection.\n");
-        return;
-    }
-    
-    // Check if the user's choice is valid
     if (choice < 1 || choice > diet_list_size) {
         printf("Invalid choice. Please try again.\n");
         return;
@@ -89,15 +84,14 @@ void inputDiet(HealthData* health_data) {
     printf("Enter the number of intake: ");
     scanf("%d", &intake);
     
-    // Calculate total calories intake based on servings
+    // Calculate total calories intaken
     int total_calories_intake = diet_list[choice - 1].calories_intake * intake;
     
-    // Store the selected diet and total calories intake in the health data
+    // ToCode: to enter the total calories intake in the health data
     strncpy(health_data->diet[health_data->diet_count].food_name, diet_list[choice - 1].food_name, MAX_FOOD_NAME_LEN - 1);
     health_data->diet[health_data->diet_count].calories_intake = total_calories_intake;
     health_data->diet_count++;
-
-    // ToCode: to enter the total calories intake in the health data
     health_data->total_calories_intake += total_calories_intake;
+    
     printf("You have intaken %d calories by eating %s (%d intake).\n", total_calories_intake, diet_list[choice - 1].food_name, intake);
 }

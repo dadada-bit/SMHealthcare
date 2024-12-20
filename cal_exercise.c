@@ -16,8 +16,7 @@
 #define MAX_EXERCISES 100  			// Maximum number of exercises
 #define MAX_EXERCISE_NAME_LEN 50	// Maximum length of the name of exercise
 
-
-// To declare the structure of the exercises
+//Exercise List
 static Exercise exercise_list[MAX_EXERCISES];
 int exercise_list_size = 0;
 
@@ -29,7 +28,7 @@ int exercise_list_size = 0;
 void loadExercises(const char *EXERCISEFILEPATH) {
     FILE *file = fopen(EXERCISEFILEPATH, "r");
     if (file == NULL) {
-        printf("There is no file for exercises! \n");
+        printf("Error: Couldn't find the exercises file! \n");
         return;
     }
 
@@ -57,50 +56,38 @@ void loadExercises(const char *EXERCISEFILEPATH) {
 
 void inputExercise(HealthData *health_data) {
     int choice;
-    int duration;
+    int duration = 0;
     int exercise_index;
-
     
     // ToCode: to provide the options for the exercises to be selected
-    
-    // Print the list of exercises
+    // the exercise lists
     printf("The list of exercises: \n");
     for (exercise_index = 0; exercise_index < exercise_list_size; exercise_index++) {
         printf("%d. %s\n", exercise_index + 1, exercise_list[exercise_index].exercise_name);
         }
 
-    // ToCode: to enter the exercise to be chosen with exit option
-    
-    // Get user choice
-    printf("Enter the number of the exercise you want to do (0 to exit): ");
+    // ToCode: to enter the exercise to be chosen with exit option    
+    // User choice
+    printf("Enter the number of the exercise you want to do: ");
     scanf("%d", &choice);
     
-    if (choice == 0) {
-        printf("Exiting exercise selection.\n");
-        return;
-    }
-    
-    // Check if the choice is valid
     if (choice < 1 || choice > exercise_list_size) {
         printf("Invalid choice. Please try again.\n");
         return;
     }
    
-    // To enter the duration of the exercise
-    printf("Enter the duration of the exercise (in min.): ");
+    // the duration of the exercise
+    printf("Enter the duration of the exercise (in minutes.): ");
     scanf("%d", &duration);
-
-    // ToCode: to enter the selected exercise and total calcories burned in the health data
-    int total_calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
     
-    // Store the selected exercise and total calories burned in the health data
+     //calculate total calories burned
+	int total_calories_burned = exercise_list[choice - 1].calories_burned_per_minute * duration;
+
+    // ToCode: to enter the selected exercise and total calcories burned in the health data    
     strncpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice - 1].exercise_name, MAX_EXERCISE_NAME_LEN - 1);   
     health_data->exercises[health_data->exercise_count].calories_burned_per_minute = total_calories_burned;
     health_data->exercise_count++;
-    
-    // Update the total calories burned in the health data
-    health_data->total_calories_burned += total_calories_burned;
+	health_data->total_calories_burned += total_calories_burned;
 
-    // Display the result
     printf("You have exercised %d calories by doing %s for %d minutes.\n", total_calories_burned, exercise_list[choice - 1].exercise_name, duration);
 }
