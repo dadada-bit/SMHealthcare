@@ -25,9 +25,6 @@ int main() {
 	// To initialize the health data object
     HealthData health_data = {0};
     
-    health_data.total_calories_intake = DAILY_CALORIE_GOAL; 
-    health_data.total_calories_burned = 0; 
-    
     
     // Tocode: to read the list of the exercises and diets
     loadExercises(EXERCISEFILEPATH);
@@ -36,7 +33,7 @@ int main() {
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
     	//calculate remaining calories
-    	int remaining = (health_data.total_calories_intake - health_data.total_calories_burned - BASAL_METABOLIC_RATE);
+    	int remaining = (health_data.total_calories_intake - (health_data.total_calories_burned - BASAL_METABOLIC_RATE));
     	
     	//Termination condition_1: Remaining calories are less than or equal to zero.
     	if (remaining <= 0) {
@@ -77,8 +74,7 @@ int main() {
             	break;
 
                 
-            case 4:
-            	
+            case 4:	
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
                 break;

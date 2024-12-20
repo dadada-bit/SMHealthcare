@@ -1,15 +1,16 @@
 [Exercises] 
-Exercise: running, Calories burned per minute: 330
-Exercise: running, Calories burned per minute: 110
-Total calories burned: 440
+Exercise: walking, Calories burned: 80
+Exercise: running, Calories burned: 330
+Total calories burned: 410
 
 [Diets] 
 Food: rice, Calories intake: 600
-Total calories intake: 2600
+Food: bread, Calories intake: 680
+Total calories intake: 1280
 
 [Total] 
-Total calories burned: 440
-Total calories intake: 2600
-Remaining calories: -160
-[Warning] Too few calories!
-You have eaten more calories than planned today, but you have exercised too much!
+Total calories burned: 410
+Total calories intake: 1280
+Remaining calories: 1130
+Please exercise for your health!
+Your total calorie intake for today has not reached your goal, remember to eat more!!

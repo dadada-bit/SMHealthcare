@@ -72,7 +72,7 @@ void inputDiet(HealthData* health_data) {
         return;
     }
     
-    // Check if the choice is valid
+    // Check if the user's choice is valid
     if (choice < 1 || choice > diet_list_size) {
         printf("Invalid choice. Please try again.\n");
         return;
@@ -97,7 +97,4 @@ void inputDiet(HealthData* health_data) {
 
     // ToCode: to enter the total calories intake in the health data
         printf("You have consumed %d calories by eating %s (%d intake).\n", total_calories_intake, diet_list[choice - 1].food_name, intake);
-
-
 }
-
