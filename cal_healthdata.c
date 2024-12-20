@@ -31,7 +31,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	
     FILE* file = fopen(HEALTHFILEPATH, "w");
     if (file == NULL) {
-        printf("Couldn't find the health data file!\n");
+        printf("There is no file for health data.\n");
         return;
     }
 
@@ -101,7 +101,7 @@ void printHealthData(const HealthData* health_data) {
         }
     printf("=======================================================================\n");
 
-	// ToCode: to print out the saved history of calories including basal metabolic rate, 
+	// ToCode: to print out the saved history of calories including basal metabolic rate, total calories burned, total calories intake, and the remaining calories
 	printf("============================== Total Calories =========================\n");
 	printf("Basal metabolic rate: %d kcal\n", BASAL_METABOLIC_RATE);
     printf("Total calories burned: %d kcal\n", health_data->total_calories_burned);

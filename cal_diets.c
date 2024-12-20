@@ -29,7 +29,7 @@ static int diet_list_size = 0;
 void loadDiets(const char* DIETFILEPATH) {
     FILE *file = fopen(DIETFILEPATH, "r");
     if (file == NULL) {
-        printf("Error: Couldn't find the diets file! \n");
+        printf("There is no file for diets! \n");
         return;
     }
 
@@ -41,7 +41,6 @@ void loadDiets(const char* DIETFILEPATH) {
         	break;
 		}
     }
-    
     fclose(file);
 }
 

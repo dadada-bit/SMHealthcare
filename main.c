@@ -20,7 +20,7 @@
 static int choice; //Stores the user's menu choice
 
 int main() {
-	// to initialize the health data object
+	// To initialize the health data object
     HealthData health_data = {0};
     
     // Tocode: to read the list of the exercises and diets
@@ -34,10 +34,10 @@ int main() {
     	
     	//Termination condition_1: Remaining calories are equal to zero.
     	if (remaining_calories = 0) {
-    		printf("\nYou have consumed or balanced all your calories for today!\n");	
+    		printf("\nYou have consumed all your calories for today!\n");	
     		break; //Exit the system
 		} 
-		
+		else{
 		// Print the menu options
 		printf("\n=======================================================================\n");
         printf("[Healthcare Management Systems] \n");
@@ -48,7 +48,7 @@ int main() {
         printf("Select the desired number: ");
         scanf("%d", &choice);
         printf("=======================================================================\n");
-      
+    }
         
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {

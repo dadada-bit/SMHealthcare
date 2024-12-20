@@ -16,7 +16,7 @@
 #define MAX_EXERCISES 100  			// Maximum number of exercises
 #define MAX_EXERCISE_NAME_LEN 50	// Maximum length of the name of exercise
 
-//Exercise List
+// To declare the structure of the exercises
 static Exercise exercise_list[MAX_EXERCISES];
 int exercise_list_size = 0;
 
@@ -28,7 +28,7 @@ int exercise_list_size = 0;
 void loadExercises(const char *EXERCISEFILEPATH) {
     FILE *file = fopen(EXERCISEFILEPATH, "r");
     if (file == NULL) {
-        printf("Error: Couldn't find the exercises file! \n");
+        printf("There is no file for exercises! \n");
         return;
     }
 
@@ -76,8 +76,8 @@ void inputExercise(HealthData *health_data) {
         return;
     }
    
-    // the duration of the exercise
-    printf("Enter the duration of the exercise (in minutes.): ");
+    // To enter the duration of the exercise
+    printf("Enter the duration of the exercise (in min.): ");
     scanf("%d", &duration);
     
      //calculate total calories burned
