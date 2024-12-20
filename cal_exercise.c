@@ -56,14 +56,17 @@ void loadExercises(const char* EXERCISEFILEPATH) {
 */
 
 void inputExercise(HealthData* health_data) {
-    int choice, duration, i;
+    int choice;
+    int duration;
+    int exercise_index;
+
     
     // ToCode: to provide the options for the exercises to be selected
     
     // Print the list of exercises
     printf("The list of exercises: \n");
-    for (i = 0; i < exercise_list_size; i++) {
-        printf("%d. %s\n", i + 1, exercise_list[i].exercise_name);
+    for (exercise_index = 0; exercise_index < exercise_list_size; exercise_index++) {
+        printf("%d. %s\n", exercise_index + 1, exercise_list[exercise_index].exercise_name);
         }
 
     // ToCode: to enter the exercise to be chosen with exit option
