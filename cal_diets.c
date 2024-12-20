@@ -56,6 +56,13 @@ void loadDiets(const char* DIETFILEPATH) {
 void inputDiet(HealthData* health_data) {
     int choice, intake, i;
     
+    //For healthy calorie intake, limit to 3 meals a day
+    if (health_data->diet_count >= 3) {
+    	printf("You can only have 3 meals today.");
+    	
+    	return;
+    }
+    
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
     
@@ -64,7 +71,7 @@ void inputDiet(HealthData* health_data) {
     }
     
 	// ToCode: to enter the diet to be chosen with exit option
-    printf("Enter the number of the food you want to consume (0 to exit): ");
+    printf("Enter the number of the food you want to intake (0 to exit): ");
     scanf("%d", &choice);
     
     if (choice == 0) {
@@ -79,7 +86,7 @@ void inputDiet(HealthData* health_data) {
     }
 
     // ToCode: to enter the selected diet in the health data
-    printf("Enter the number of servings: ");
+    printf("Enter the number of intake: ");
     scanf("%d", &intake);
     
     // Calculate total calories intake based on servings
@@ -96,5 +103,5 @@ void inputDiet(HealthData* health_data) {
 
 
     // ToCode: to enter the total calories intake in the health data
-        printf("You have consumed %d calories by eating %s (%d intake).\n", total_calories_intake, diet_list[choice - 1].food_name, intake);
+        printf("You have intaken %d calories by eating %s (%d intake).\n", total_calories_intake, diet_list[choice - 1].food_name, intake);
 }

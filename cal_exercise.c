@@ -99,6 +99,6 @@ void inputExercise(HealthData* health_data) {
     health_data->total_calories_burned += total_calories_burned;
 
     // Display the result
-    printf("You have burned %d calories by doing %s for %d minutes.\n", total_calories_burned, exercise_list[choice - 1].exercise_name, duration);
+    printf("You have exercised %d calories by doing %s for %d minutes.\n", total_calories_burned, exercise_list[choice - 1].exercise_name, duration);
 }
 
