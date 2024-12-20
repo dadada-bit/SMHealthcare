@@ -13,10 +13,6 @@
 #include "cal_diets.h"
 #include "cal_healthdata.h"
 
-int isCaloriesConsumed(const HealthData* health_data) {
-    int total_calories = health_data->total_calories_burned + health_data->total_calories_intake;
-    return total_calories >= DAILY_CALORIE_GOAL;
-}
 
 /*
     description : enter the exercise and diet history in "health_data.txt" 
@@ -39,7 +35,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
     for (i = 0; i < health_data->exercise_count; i++) {
-        fprintf(file, "Exercise: %s, Calories burned per minute: %d\n",
+        fprintf(file, "Exercise: %s, Calories burned: %d\n",
                 health_data->exercises[i].exercise_name,
                 health_data->exercises[i].calories_burned_per_minute);
     }

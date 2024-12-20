@@ -20,9 +20,14 @@
 static int choice;
 int i;
 
+
 int main() {
 	// To initialize the health data object
     HealthData health_data = {0};
+    
+    health_data.total_calories_intake = DAILY_CALORIE_GOAL; 
+    health_data.total_calories_burned = 0; 
+    
     
     // Tocode: to read the list of the exercises and diets
     loadExercises(EXERCISEFILEPATH);
@@ -30,20 +35,27 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	if (isCaloriesConsumed(&health_data)){
-            printf("You have consumed all your calories for today! \n");
+    	//calculate remaining calories
+    	int remaining = (health_data.total_calories_intake - health_data.total_calories_burned - BASAL_METABOLIC_RATE);
+    	
+    	//Termination condition_1: Remaining calories are less than or equal to zero.
+    	if (remaining <= 0) {
+    		printf("\nYou have consumed or balanced all your calories for today!\n");
+    		
+    		break;
 		} 
-		else{
-			printf("\n=======================================================================\n");
-        	printf("[Healthcare Management Systems] \n");
-        	printf("1. Exercise \n");
-        	printf("2. Diet \n");
-        	printf("3. Show logged information \n");
-        	printf("4. Exit \n");
-        	printf("Select the desired number: ");
-        	scanf("%d", &choice);
-        	printf("=======================================================================\n");
-        }
+		
+		
+		printf("\n=======================================================================\n");
+        printf("[Healthcare Management Systems] \n");
+        printf("1. Exercise \n");
+        printf("2. Diet \n");
+        printf("3. Show logged information \n");
+        printf("4. Exit \n"); //Termination condition_2: The user selects option 4.
+        printf("Select the desired number: ");
+        scanf("%d", &choice);
+        printf("=======================================================================\n");
+      
         
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
@@ -75,7 +87,9 @@ int main() {
                 printf("[Error] Invalid option. \n");
                 printf("Please try again! \n");
         }
-    } while (choice != 4 && !isCaloriesConsumed(&health_data) );
+    } while (choice != 4);
+    
+
 
     return 0;
 }

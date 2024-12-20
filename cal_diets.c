@@ -82,8 +82,17 @@ void inputDiet(HealthData* health_data) {
     printf("Enter the number of servings: ");
     scanf("%d", &intake);
     
-    // Calculate total calories consumed based on servings
+    // Calculate total calories intake based on servings
     int total_calories_intake = diet_list[choice - 1].calories_intake * intake;
+    
+    // Store the selected diet and total calories intake in the health data
+    strncpy(health_data->diet[health_data->diet_count].food_name, 
+            diet_list[choice - 1].food_name, MAX_FOOD_NAME_LEN - 1);
+    health_data->diet[health_data->diet_count].calories_intake = total_calories_intake;
+    health_data->diet_count++;
+    
+    // Update the total calories intake
+    health_data->total_calories_intake += total_calories_intake;
 
 
     // ToCode: to enter the total calories intake in the health data
